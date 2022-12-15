@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-from core.blocks import transactions_in_block
+from core.transactions import transactions_in_block
 from core.events import events_in_block
 from provider import Provider
 load_dotenv()
