@@ -1,6 +1,7 @@
 import json
 import requests
 
+
 class Provider:
     """RPCProvider module
 
@@ -17,6 +18,9 @@ class Provider:
                 kwargs[arg] = self.__deep_merge(getattr(self.session, arg), kwargs[arg])
             setattr(self.session, arg, kwargs[arg])
         self.base_request_data = {"jsonrpc":"2.0", "id":1, "method":"", "params":[]}
+        self.headers = {
+            'Content-Type': 'application/json'
+        }
         
     def _get_request_data(self, method, params):
         request_data = self.base_request_data
@@ -25,11 +29,11 @@ class Provider:
         return json.dumps(request_data)
 
     def get(self, url, **kwargs):
-        return self.session.get(self.provider_url+url, **kwargs)
+        return self.session.get(self.provider_url+url, headers=self.headers, **kwargs)
 
     def post(self, method="", params=[], **kwargs):
         data = self._get_request_data(method, params)
-        return self.session.post(self.provider_url, data=data, **kwargs)
+        return self.session.post(self.provider_url, data=data, headers=self.headers, **kwargs)
 
     @staticmethod
     def __deep_merge(source, destination):
