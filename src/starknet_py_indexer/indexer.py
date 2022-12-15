@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 from starknet_py_indexer.core.transactions import transactions_in_block
 from starknet_py_indexer.core.events import events_in_block
-from provider import Provider
+from starknet_py_indexer.provider import Provider
 load_dotenv()
 
 def start():
