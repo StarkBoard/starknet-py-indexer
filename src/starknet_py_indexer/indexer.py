@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
 
-from core.transactions import transactions_in_block
-from core.events import events_in_block
+from starknet_py_indexer.core.transactions import transactions_in_block
+from starknet_py_indexer.core.events import events_in_block
 from provider import Provider
 load_dotenv()
 
