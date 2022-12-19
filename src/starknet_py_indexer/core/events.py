@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 def events_in_block(block_id, provider):
     """Retrieve the list of events in a given block
